@@ -18,21 +18,21 @@ material = SubResource( 2 )
 
 [sub_resource type="BoxShape" id=6]
 
-[sub_resource type="PrismMesh" id=10]
+[sub_resource type="PrismMesh" id=7]
 
-[sub_resource type="SpatialMaterial" id=11]
+[sub_resource type="SpatialMaterial" id=8]
 albedo_color = Color( 0.941176, 0.94902, 0.054902, 1 )
 
-[sub_resource type="SpatialMaterial" id=12]
+[sub_resource type="SpatialMaterial" id=9]
 albedo_color = Color( 0.137255, 0.305882, 0.882353, 1 )
 
-[sub_resource type="PrismMesh" id=13]
+[sub_resource type="PrismMesh" id=10]
 
-[sub_resource type="SphereShape" id=7]
+[sub_resource type="SphereShape" id=11]
 
-[sub_resource type="SphereMesh" id=8]
+[sub_resource type="SphereMesh" id=12]
 
-[sub_resource type="CylinderMesh" id=9]
+[sub_resource type="CylinderMesh" id=13]
 
 [sub_resource type="SpatialMaterial" id=14]
 albedo_color = Color( 0.937255, 0.92549, 0.0431373, 1 )
@@ -73,6 +73,7 @@ shape = SubResource( 6 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 3 )
+current = true
 fov = 72.289
 
 [node name="GUI" type="Control" parent="."]
@@ -132,14 +133,17 @@ __meta__ = {
 
 [node name="Pointer" type="MeshInstance" parent="."]
 transform = Transform( 0.1, 0, 0, 0, -9.77524e-08, -0.04, 0, 0.6, -6.51683e-09, -1, 0, 1 )
-mesh = SubResource( 10 )
-material/0 = SubResource( 11 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
 script = ExtResource( 3 )
+
+[node name="Camera" type="Camera" parent="Pointer"]
+transform = Transform( -10, 5.43069e-07, 0, -3.25841e-06, -1.66667, 0, 0, 0, 25, 0, 0.0302985, -5.51525 )
 
 [node name="Correct_pointer" type="MeshInstance" parent="Pointer"]
 transform = Transform( 0.999999, 0, 0, 0, -2.4437e-06, 0.0673412, 0, -14.9993, -1.09713e-08, 0, -2.38419e-07, 0.559103 )
-material_override = SubResource( 12 )
-mesh = SubResource( 13 )
+material_override = SubResource( 9 )
+mesh = SubResource( 10 )
 material/0 = null
 
 [node name="Cannon" type="KinematicBody" parent="."]
@@ -147,28 +151,28 @@ transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1, 0, 1 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Cannon"]
-shape = SubResource( 7 )
+shape = SubResource( 11 )
 
 [node name="Sphere" type="MeshInstance" parent="Cannon"]
-mesh = SubResource( 8 )
+mesh = SubResource( 12 )
 material/0 = null
 
 [node name="Barrel1" type="MeshInstance" parent="Cannon"]
 transform = Transform( 0.1, 0, 0, 0, -1.62921e-07, -0.1, 0, 1, -1.62921e-08, 0.4, 0, 0.231291 )
-mesh = SubResource( 9 )
+mesh = SubResource( 13 )
 material/0 = SubResource( 14 )
 
 [node name="Barrel2" type="MeshInstance" parent="Cannon"]
 transform = Transform( 0.1, 0, 0, 0, -1.62921e-07, -0.1, 0, 1, -1.62921e-08, -0.4, 0, 0.156562 )
-mesh = SubResource( 9 )
+mesh = SubResource( 13 )
 material/0 = SubResource( 15 )
 
 [node name="correct_Barrel4" type="MeshInstance" parent="Cannon"]
 transform = Transform( 0.1, 0, 0, 0, -1.62921e-07, 0.1, 0, -1, -1.62921e-08, 0.4, 0.5, -1 )
-mesh = SubResource( 9 )
+mesh = SubResource( 13 )
 material/0 = SubResource( 16 )
 
 [node name="correct_Barrel3" type="MeshInstance" parent="Cannon"]
 transform = Transform( 0.1, 0, 0, 0, -1.62921e-07, 0.1, 0, -1, -1.62921e-08, -0.4, 0.5, -1 )
-mesh = SubResource( 9 )
+mesh = SubResource( 13 )
 material/0 = SubResource( 17 )
